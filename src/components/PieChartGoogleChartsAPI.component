@@ -1,0 +1,50 @@
+<apex:component >
+    
+    <!-- Attributes of the component to hold list of type SObject -->
+    <apex:attribute name="List" description="List to draw pie chart."
+        type="{type of SObject}" required="true"/>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        console.log('Loaded GStatic charts loader');
+    	// Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(initPieChart);
+
+      // Callback that creates and populates a data table,
+      function initPieChart() {
+          console.log("Invoking Remote Function !!");
+                     
+           // create table model for chart with columns
+           var data = new google.visualization.DataTable();
+          // add columns to the data table
+          data.addColumn('string', 'Opportunity');
+          data.addColumn('number', 'Amount');
+                         
+          // add rows from the list passed to component by parent component
+          <apex:repeat value="{!List}" var="r">
+                 data.addRow(['{!r.Name}', {!r.ExpectedRevenue}]);
+          </apex:repeat>
+                     
+          // Set chart customizing options
+	  var options = {'title':'Google Charts API - Pie Chart - Opportunities',
+                         'width':400,
+                           'height':300,
+                           'is3D':true};
+                     
+          // Instantiate and draw our chart, passing in some options.
+          var options = {'title':'Google Charts API - Pie Chart - Opportunities',
+                         'width':400,
+                         'height':300,
+                         'is3D':true};
+                     
+          // Instantiate and draw our chart, passing in some options.
+          var chart = new google.visualization.PieChart(document.getElementById('pieChartDiv'));
+          chart.draw(data, options);
+                     
+      }
+    
+    </script>
+</apex:component>

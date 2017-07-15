@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>GoogleChartsAPI_PieChartController</members>
+        <members>GoogleChartsController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>CalanderGoogleChartsAPI</members>
+        <members>PieChartGoogleChartsAPI</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>vf_googlecharts_piechart_ex</members>
+        <members>vf_googlechartsapi_ex</members>
+        <name>ApexPage</name>
+    </types>
+    <version>38.0</version>
+</Package>
